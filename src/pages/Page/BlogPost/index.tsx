@@ -2,9 +2,7 @@ import React from "react";
 import { AppContext } from "../../../_context/AppProvider";
 import ListComment from "../ListComment";
 import LayoutBlog from "../../../components/LayoutBlog";
-import ContentPost from "../../../components/ContentPost";
-import ContentAside from "../../../components/ContentAside";
-import ContentGallery from "../../../components/ContentGallery";
+import Content from "../../../components/Content";
 
 interface Props {
   slug?: string;
@@ -42,36 +40,7 @@ const BlogPost: React.FC<Props> = ({ slug }) => {
             posts.map((item, index) => (
               <React.Fragment key={index + 1}>
                 <div className="col-md-12">
-                  {item.format === "standard" && (
-                    <ContentPost
-                      slug={item.slug}
-                      title={item.title.rendered}
-                      postDate={item.date}
-                      author={item.author}
-                      featuredMedia={item.featured_media}
-                      content={item.content.rendered}
-                    />
-                  )}
-                  {item.format === "aside" && (
-                    <ContentAside
-                      slug={item.slug}
-                      title={item.title.rendered}
-                      postDate={item.date}
-                      author={item.author}
-                      featuredMedia={item.featured_media}
-                      content={item.content.rendered}
-                    />
-                  )}
-                  {item.format === "gallery" && (
-                    <ContentGallery
-                      slug={item.slug}
-                      title={item.title.rendered}
-                      postDate={item.date}
-                      author={item.author}
-                      featuredMedia={item.featured_media}
-                      content={item.content.rendered}
-                    />
-                  )}
+                  <Content item={item} />
                   {item.type === "post" && item.id && (
                     <>
                       <hr />

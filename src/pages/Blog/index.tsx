@@ -1,7 +1,5 @@
 import React from "react";
-import ContentAside from "../../components/ContentAside";
-import ContentGallery from "../../components/ContentGallery";
-import ContentPost from "../../components/ContentPost";
+import Content from "../../components/Content";
 import { AppContext } from "../../_context/AppProvider";
 
 const Blog = () => {
@@ -177,38 +175,7 @@ const Blog = () => {
             : posts.length === 0
             ? "No Posts Found"
             : posts.map((item, index) => (
-                <React.Fragment key={index + 1}>
-                  {item.format === "standard" && (
-                    <ContentPost
-                      slug={item.slug}
-                      title={item.title.rendered}
-                      postDate={item.date}
-                      author={item.author}
-                      featuredMedia={item.featured_media}
-                      content={item.excerpt.rendered}
-                    />
-                  )}
-                  {item.format === "aside" && (
-                    <ContentAside
-                      slug={item.slug}
-                      title={item.title.rendered}
-                      postDate={item.date}
-                      author={item.author}
-                      featuredMedia={item.featured_media}
-                      content={item.content.rendered}
-                    />
-                  )}
-                  {item.format === "gallery" && (
-                    <ContentGallery
-                      slug={item.slug}
-                      title={item.title.rendered}
-                      postDate={item.date}
-                      author={item.author}
-                      featuredMedia={item.featured_media}
-                      content={item.content.rendered}
-                    />
-                  )}
-                </React.Fragment>
+                <Content item={item} key={index + 1} />
               ))}
         </div>
       </div>

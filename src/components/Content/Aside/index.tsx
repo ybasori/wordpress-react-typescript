@@ -1,6 +1,6 @@
 import moment from "moment";
 import React from "react";
-import { FeaturedMediaProps } from "../../_config/types";
+import { FeaturedMediaProps } from "../../../_config/types";
 
 interface Props {
   slug: string;

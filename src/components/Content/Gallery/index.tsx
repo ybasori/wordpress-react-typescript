@@ -1,7 +1,7 @@
 import moment from "moment";
 import React from "react";
 import { Link } from "react-router-dom";
-import { FeaturedMediaProps } from "../../_config/types";
+import { FeaturedMediaProps } from "../../../_config/types";
 
 interface Props {
   slug: string;
@@ -15,7 +15,7 @@ interface Props {
   content: string;
 }
 
-const ContentPost: React.FC<Props> = ({
+const ContentGallery: React.FC<Props> = ({
   slug,
   title,
   postDate,
@@ -65,4 +65,4 @@ const ContentPost: React.FC<Props> = ({
   );
 };
 
-export default ContentPost;
+export default ContentGallery;

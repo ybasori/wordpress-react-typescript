@@ -1,7 +1,7 @@
 import moment from "moment";
 import React from "react";
-import { Link } from "react-router-dom";
-import { FeaturedMediaProps } from "../../_config/types";
+import { Link, useParams } from "react-router-dom";
+import { FeaturedMediaProps } from "../../../_config/types";
 
 interface Props {
   slug: string;
@@ -13,23 +13,31 @@ interface Props {
   };
   featuredMedia?: FeaturedMediaProps;
   content: string;
+  excerpt: string;
 }
 
-const ContentGallery: React.FC<Props> = ({
+const ContentPost: React.FC<Props> = ({
   slug,
   title,
   postDate,
   author,
   featuredMedia: featured_media,
   content,
+  excerpt,
 }) => {
+  const { slug: currentSlug } = useParams();
+
   return (
     <div className="row mb-3">
       <div className="col-md-12">
         <div className="row">
           <div className="col-md-12">
             <h2 className="display-6">
-              <Link to={`/${slug}/`}>{title}</Link>
+              {slug === currentSlug ? (
+                title
+              ) : (
+                <Link to={`/${slug}/`}>{title}</Link>
+              )}
             </h2>
           </div>
         </div>
@@ -56,7 +64,7 @@ const ContentGallery: React.FC<Props> = ({
           <div
             className="col-md-12"
             dangerouslySetInnerHTML={{
-              __html: content,
+              __html: slug === currentSlug ? content : excerpt,
             }}
           ></div>
         </div>
@@ -65,4 +73,4 @@ const ContentGallery: React.FC<Props> = ({
   );
 };
 
-export default ContentGallery;
+export default ContentPost;
