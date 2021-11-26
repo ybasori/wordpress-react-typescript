@@ -26,7 +26,7 @@ const api = {
       })
       .join("&");
     return instance.get(
-      `/wp-json/webivert/v1/menu${id ? `/${id}` : ""}?${paramsStr}`
+      `/wp-json/custom/v1/menu${id ? `/${id}` : ""}?${paramsStr}`
     );
   },
   getPages: (params: ParamProps, id?: number) => {

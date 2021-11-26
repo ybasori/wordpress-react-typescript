@@ -18,7 +18,7 @@ function wp_menu_route()
 }
 
 add_action('rest_api_init', function () {
-    register_rest_route('webivert/v1', '/menu/', array(
+    register_rest_route('custom/v1', '/menu/', array(
         'methods' => 'GET',
         'callback' => 'wp_menu_route',
     ));
@@ -51,7 +51,7 @@ function wp_menu_single(WP_REST_Request $request)
 }
 
 add_action('rest_api_init', function () {
-    register_rest_route('webivert/v1', '/menu/(?P<id>[\d]+)', array(
+    register_rest_route('custom/v1', '/menu/(?P<id>[\d]+)', array(
         'methods' => 'GET',
         'callback' => 'wp_menu_single',
     ));
